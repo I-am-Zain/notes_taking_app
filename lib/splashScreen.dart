@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:notes_taking_app/main.dart';
-import 'package:notes_taking_app/screens/note_list_screen.dart';
+
 
 class MyHomePage extends StatefulWidget {
   @override

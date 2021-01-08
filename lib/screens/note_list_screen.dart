@@ -69,7 +69,7 @@ class _NoteListScreenState extends State<NoteListScreen> {
                   ),
                 ),
                 floatingActionButton: FloatingActionButton(
-
+                  backgroundColor: Color(0xFF1D1E33),
                   onPressed:(){
                     goToNoteEditScreen(context);
                   },
@@ -89,19 +89,17 @@ class _NoteListScreenState extends State<NoteListScreen> {
           color: headerColor,
           borderRadius: BorderRadius.only(
             bottomRight: Radius.circular(75.0),
+            bottomLeft: Radius.circular(75.0),
           ),
         ),
-        height: 150,
+        height: 100,
         width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+
             Text(
-              'ZaYnee\'s',
-              style: headerRideStyle,
-            ),
-            Text(
-              'NOTES',
+              'ZaYnee\'s NOTES',
               style: headerNotesStyle,
             ),
           ],

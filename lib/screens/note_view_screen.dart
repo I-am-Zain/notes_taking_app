@@ -34,12 +34,13 @@ class _NoteViewScreenState extends State<NoteViewScreen> {
     return Scaffold(
       backgroundColor: white,
       appBar: AppBar(
+
         elevation: 0.7,
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFF1D1E33),
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.black,
+            color: Colors.white,
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -50,7 +51,7 @@ class _NoteViewScreenState extends State<NoteViewScreen> {
           IconButton(
             icon: Icon(
               Icons.delete,
-              color: Colors.black,
+              color: Colors.white,
             ),
             onPressed: () => _showDialog(),
           ),
@@ -95,6 +96,7 @@ class _NoteViewScreenState extends State<NoteViewScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xFF111828),
         onPressed: () {
           Navigator.pushNamed(context, NoteEditScreen.route,
               arguments: selectedNote.id);

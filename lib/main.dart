@@ -19,7 +19,7 @@ class SplashScreen extends StatelessWidget {
         primarySwatch: Colors.green,
       ),
       home: MyHomePage(),
-      debugShowCheckedModeBanner: false,
+
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:notes_taking_app/helper/note_provider.dart';
@@ -59,41 +60,21 @@ class _NoteEditScreenState extends State {
       backgroundColor: white,
       appBar: AppBar(
         elevation: 0.7,
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFF1D1E33),
         leading: IconButton(
           onPressed: () => Navigator.of(context).pop(),
           icon: Icon(Icons.arrow_back),
-          color: Colors.black,
+          color: Colors.white,
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.share),
-            color: Colors.black,
-            onPressed: share,
-          ),
-          IconButton(
-            icon: Icon(Icons.photo_camera),
-            color: Colors.black,
+
+            icon: Icon(Icons.save),
+            color: Colors.white,
             onPressed: () {
-              getImage(ImageSource.camera);
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.insert_photo),
-            color: Colors.black,
-            onPressed: () {
-              getImage(ImageSource.gallery);
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.delete),
-            color: Colors.black,
-            onPressed: () {
-              if (id != null) {
-                _showDialog();
-              } else {
-                Navigator.pop(context);
-              }
+              if (titleController.text.isEmpty)
+                titleController.text = 'Untitled Note';
+              saveNote();
             },
           )
         ],
@@ -178,14 +159,31 @@ class _NoteEditScreenState extends State {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          if (titleController.text.isEmpty)
-            titleController.text = 'Untitled Note';
-          saveNote();
-        },
-        child: Icon(Icons.save),
-      ),
+        floatingActionButton: SpeedDial(
+          backgroundColor: Color(0xFF1D1E33),
+          animatedIcon: AnimatedIcons.menu_close,
+          children: [
+            SpeedDialChild(
+              child: Icon(Icons.camera_alt_outlined),
+              label: 'Take A Picture',
+              onTap: () {
+                getImage(ImageSource.camera);
+              },
+            ),
+            SpeedDialChild(
+              child: Icon(Icons.insert_photo_outlined),
+              label: 'Insert From Gallery',
+              onTap: () {
+                getImage(ImageSource.gallery);
+              },
+            ),
+            SpeedDialChild(
+              child: Icon(Icons.share_outlined),
+              label: 'Share',
+              onTap: share,
+            ),
+          ],
+        )
     );
   }
 
