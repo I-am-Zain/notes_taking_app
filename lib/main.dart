@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:notes_taking_app/screens/note_edit_screen.dart';
 import 'package:notes_taking_app/screens/note_list_screen.dart';
 import 'package:notes_taking_app/screens/note_view_screen.dart';
+import 'package:notes_taking_app/splashScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {
-          '/': (context) => NoteListScreen(),
+          '/': (context) => MyHomePage(), //NoteListScreen
           NoteViewScreen.route: (context) => NoteViewScreen(),
           NoteEditScreen.route: (context) => NoteEditScreen(),
         },
