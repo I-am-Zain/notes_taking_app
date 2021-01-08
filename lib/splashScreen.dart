@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:notes_taking_app/main.dart';
 import 'package:notes_taking_app/screens/note_list_screen.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -17,7 +18,7 @@ class _MyHomePageState extends State<MyHomePage> {
             () => Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => MaterialApp(
           title: 'Notes Taking App',
-          home: NoteListScreen(),
+          home: MyApp(),
           theme: ThemeData(
               primarySwatch: Colors.blue,
           ),

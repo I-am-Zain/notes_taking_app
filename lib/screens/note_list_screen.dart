@@ -119,7 +119,7 @@ class _NoteListScreenState extends State<NoteListScreen> {
             Padding(
               padding: const EdgeInsets.only(top: 50.0),
               child: Image.asset(
-                'crying_emoji.png',
+                'image/zain.jpg',
                 fit: BoxFit.cover,
                 width: 200,
                 height: 200,

@@ -8,8 +8,22 @@ import 'package:flutter/cupertino.dart';
 
 import 'helper/note_provider.dart';
 void main() {
-  runApp(MyApp());
+  runApp(SplashScreen());
 }
+class SplashScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Splash Screen',
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
+      home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -21,7 +35,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {
-          '/': (context) => MyHomePage(), //NoteListScreen
+          '/': (context) => NoteListScreen(), //NoteListScreen
           NoteViewScreen.route: (context) => NoteViewScreen(),
           NoteEditScreen.route: (context) => NoteEditScreen(),
         },
