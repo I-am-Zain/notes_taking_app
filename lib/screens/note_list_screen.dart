@@ -4,7 +4,7 @@ import 'package:notes_taking_app/helper/note_provider.dart';
 import 'package:notes_taking_app/utils/constants.dart';
 import 'package:notes_taking_app/widget/list_item.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
+
 
 import 'note_edit_screen.dart';
 class NoteListScreen extends StatefulWidget {
@@ -84,9 +84,7 @@ class _NoteListScreenState extends State<NoteListScreen> {
     );
   }
   Widget header() {
-    return GestureDetector(
-      onTap: _launchUrl,
-      child: Container(
+    return Container(
         decoration: BoxDecoration(
           color: headerColor,
           borderRadius: BorderRadius.only(
@@ -108,17 +106,10 @@ class _NoteListScreenState extends State<NoteListScreen> {
             ),
           ],
         ),
-      ),
-    );
+      );
+
   }
-  _launchUrl() async {
-    const url = 'https://www.androidride.com';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
+
   Widget noNotesUI(BuildContext context) {
     return ListView(
       children: [
