@@ -28,6 +28,24 @@ class NoteProvider with ChangeNotifier{
       },
     );
   }
-
+  Future getNotes() async {
+    final notesList = await DatabaseHelper.getNotesFromDB();
+    _items = notesList
+        .map(
+          (item) =>
+          Note(
+              item['id'], item['title'], item['content'], item['imagePath']),
+    )
+        .toList();
+    notifyListeners();
+  }
+  Note getNote(int id) {
+    return _items.firstWhere((note) => note.id == id, orElse: () => null);
+  }
+  Future deleteNote(int id) {
+    _items.removeWhere((element) => element.id == id);
+    notifyListeners();
+    return DatabaseHelper.delete(id);
+  }
 
 }
