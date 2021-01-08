@@ -87,7 +87,7 @@ class _NoteListScreenState extends State<NoteListScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'ANDROIDRIDE\'S',
+              'ZaYnee\'s',
               style: headerRideStyle,
             ),
             Text(

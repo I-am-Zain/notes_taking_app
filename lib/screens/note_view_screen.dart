@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:notes_taking_app/models/note.dart';
 import 'package:notes_taking_app/utils/constants.dart';
+import 'package:notes_taking_app/widget/delete_popup.dart';
 
 import 'note_edit_screen.dart';
 class NoteViewScreen extends StatefulWidget {
@@ -86,5 +87,12 @@ class _NoteViewScreenState extends State<NoteViewScreen> {
         child: Icon(Icons.edit),
       ),
     );
+  }
+  _showDialog() {
+    showDialog(
+        context: this.context,
+        builder: (context) {
+          return DeletePopUp(selectedNote: selectedNote);
+        });
   }
 }
