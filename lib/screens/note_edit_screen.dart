@@ -1,18 +1,25 @@
-import 'dart:html';
-import 'package:notes_taking_app/models/note.dart';
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_share/flutter_share.dart';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:notes_taking_app/helper/note_provider.dart';
-
+import 'package:notes_taking_app/models/note.dart';
 import 'package:notes_taking_app/utils/constants.dart';
+import 'package:notes_taking_app/widget/delete_popup.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
+
+import 'note_view_screen.dart';
+
+
 class NoteEditScreen extends StatefulWidget {
   static const route = '/edit-note';
   @override
   _NoteEditScreenState createState() => _NoteEditScreenState();
 }
-
-class _NoteEditScreenState extends State<NoteEditScreen> {
+class _NoteEditScreenState extends State {
   final titleController = TextEditingController();
   final contentController = TextEditingController();
   File _image;
@@ -46,8 +53,6 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
     contentController.dispose();
     super.dispose();
   }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -183,4 +188,50 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
       ),
     );
   }
+
+
+  void saveNote() {
+    String title = titleController.text.trim();
+    String content = contentController.text.trim();
+    String imagePath = _image != null ? _image.path : null;
+    if (id != null) {
+      Provider.of<NoteProvider>(this.context, listen: false)
+          .addOrUpdateNote(id, title, content, imagePath, EditMode.UPDATE);
+      Navigator.of(this.context).pop();
+    } else {
+      int id = DateTime
+          .now()
+          .millisecondsSinceEpoch;
+      Provider.of<NoteProvider>(this.context, listen: false)
+          .addOrUpdateNote(id, title, content, imagePath, EditMode.ADD);
+      Navigator.of(this.context)
+          .pushReplacementNamed(NoteViewScreen.route, arguments: id);
+    }
+  }
+
+
+
+  void _showDialog() {
+    showDialog(
+        context: this.context,
+        builder: (context) {
+          return DeletePopUp(selectedNote: selectedNote);
+        });
+  }
+
+  void getImage(ImageSource imageSource) async {
+    PickedFile imageFile = await picker.getImage(source: imageSource);
+    if (imageFile == null) return;
+    File tmpFile = File(imageFile.path);
+    final appDir = await getApplicationDocumentsDirectory();
+    final fileName = basename(imageFile.path);
+    tmpFile = await tmpFile.copy('${appDir.path}/$fileName');
+    setState(() {
+      _image = tmpFile;
+
+    });
+  }
+
+
+
 }

@@ -1,11 +1,14 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:notes_taking_app/helper/note_provider.dart';
 import 'package:notes_taking_app/models/note.dart';
 import 'package:notes_taking_app/utils/constants.dart';
 import 'package:notes_taking_app/widget/delete_popup.dart';
+import 'package:provider/provider.dart';
 
 import 'note_edit_screen.dart';
+
 class NoteViewScreen extends StatefulWidget {
   static const route='/note-view';
   @override
@@ -13,7 +16,19 @@ class NoteViewScreen extends StatefulWidget {
 }
 
 class _NoteViewScreenState extends State<NoteViewScreen> {
+
+
   Note selectedNote;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final id = ModalRoute.of(context).settings.arguments;
+    final provider = Provider.of<NoteProvider>(context);
+    if (provider.getNote(id) != null) {
+      selectedNote = provider.getNote(id);
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,4 +110,5 @@ class _NoteViewScreenState extends State<NoteViewScreen> {
           return DeletePopUp(selectedNote: selectedNote);
         });
   }
+
 }
