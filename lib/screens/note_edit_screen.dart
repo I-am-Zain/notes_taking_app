@@ -66,11 +66,11 @@ class _NoteEditScreenState extends State {
           color: Colors.black,
         ),
         actions: [
-          // IconButton(
-          //   icon: Icon(Icons.share),
-          //   color: Colors.black,
-          //   onPressed: share,
-          // ),
+          IconButton(
+            icon: Icon(Icons.share),
+            color: Colors.black,
+            onPressed: share,
+          ),
           IconButton(
             icon: Icon(Icons.photo_camera),
             color: Colors.black,
@@ -232,6 +232,15 @@ class _NoteEditScreenState extends State {
     });
   }
 
+  Future<void> share() async {
+    await FlutterShare.share(
+      title: 'Example share',
 
+      text: 'Note Title: ${titleController.text} \n Note Content: ${contentController.text}',
+
+      //linkUrl: ,
+      chooserTitle: 'Where to Share the Notes',
+    );
+  }
 
 }
