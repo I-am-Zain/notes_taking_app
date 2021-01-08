@@ -75,6 +75,7 @@ class _NoteListScreenState extends State<NoteListScreen> {
                   },
                   child: Icon(Icons.add),
                 ),
+
               );
             }
           }

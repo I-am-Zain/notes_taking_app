@@ -6,8 +6,9 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:notes_taking_app/helper/note_provider.dart';
 import 'package:notes_taking_app/models/note.dart';
+import 'package:notes_taking_app/screens/login_screen.dart';
 import 'package:notes_taking_app/utils/constants.dart';
-import 'package:notes_taking_app/widget/delete_popup.dart';
+
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
@@ -182,6 +183,11 @@ class _NoteEditScreenState extends State {
               label: 'Share',
               onTap: share,
             ),
+            SpeedDialChild(
+              child: Icon(Icons.share_outlined),
+              label: 'Share',
+              onTap: (){Navigator.push(context, new MaterialPageRoute(builder: (context) => new LoginPage()));}
+            ),
           ],
         )
     );
@@ -209,13 +215,13 @@ class _NoteEditScreenState extends State {
 
 
 
-  void _showDialog() {
-    showDialog(
-        context: this.context,
-        builder: (context) {
-          return DeletePopUp(selectedNote: selectedNote);
-        });
-  }
+  // void _showDialog() {
+  //   showDialog(
+  //       context: this.context,
+  //       builder: (context) {
+  //         return DeletePopUp(selectedNote: selectedNote);
+  //       });
+  // }
 
   void getImage(ImageSource imageSource) async {
     PickedFile imageFile = await picker.getImage(source: imageSource);
