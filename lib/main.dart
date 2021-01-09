@@ -12,6 +12,7 @@ import 'helper/note_provider.dart';
 void main() async  {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   runApp(SplashScreen());
 }
 // void main() {
@@ -21,6 +22,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Splash Screen',
       theme: ThemeData(
         primarySwatch: Colors.green,

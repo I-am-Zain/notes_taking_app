@@ -35,9 +35,6 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: 5.0,
-              ),
               Padding(
                 padding: EdgeInsets.all(20.0),
                 child: Column(
@@ -48,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                       style: TextStyle(color: Colors.white, fontSize: 40,fontWeight:  FontWeight.bold),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
                     Text(
                       'ZaYnee\'s NOTES',
@@ -126,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         SizedBox(
-                          height: 90,
+                          height: 10,
                         ),
 
                         GestureDetector(
@@ -178,7 +175,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         SizedBox(
-                          height: 50,
+                          height: 5,
                         ),
                         GestureDetector(
                           onTap: (){Navigator.push(context, new MaterialPageRoute(builder: (context) => new SignUpScreen()));},

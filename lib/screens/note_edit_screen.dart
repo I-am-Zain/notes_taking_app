@@ -183,11 +183,7 @@ class _NoteEditScreenState extends State {
               label: 'Share',
               onTap: share,
             ),
-            SpeedDialChild(
-              child: Icon(Icons.share_outlined),
-              label: 'Share',
-              onTap: (){Navigator.push(context, new MaterialPageRoute(builder: (context) => new LoginPage()));}
-            ),
+
           ],
         )
     );
@@ -238,7 +234,7 @@ class _NoteEditScreenState extends State {
 
   Future<void> share() async {
     await FlutterShare.share(
-      title: 'Example share',
+      title: 'Notes Taking App ',
 
       text: 'Note Title: ${titleController.text} \n Note Content: ${contentController.text}',
 

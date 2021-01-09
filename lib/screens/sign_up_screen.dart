@@ -47,7 +47,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       style: TextStyle(color: Colors.white, fontSize: 40,fontWeight:  FontWeight.bold),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
                     Text(
                       'ZaYnee\'s NOTES',
@@ -122,7 +122,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
                         SizedBox(
-                          height: 90,
+                          height: 20,
                         ),
 
 
