@@ -6,7 +6,7 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:notes_taking_app/helper/note_provider.dart';
 import 'package:notes_taking_app/models/note.dart';
-import 'package:notes_taking_app/screens/login_screen.dart';
+//import 'package:notes_taking_app/screens/login_screen.dart';
 import 'package:notes_taking_app/utils/constants.dart';
 
 import 'package:path/path.dart';
@@ -69,7 +69,6 @@ class _NoteEditScreenState extends State {
         ),
         actions: [
           IconButton(
-
             icon: Icon(Icons.save),
             color: Colors.white,
             onPressed: () {
@@ -77,7 +76,28 @@ class _NoteEditScreenState extends State {
                 titleController.text = 'Untitled Note';
               saveNote();
             },
-          )
+          ),
+          IconButton(
+            icon: Icon(Icons.alarm_add),
+            color: Colors.white,
+                onPressed: () {
+                final DateTime now = DateTime.now();
+                showTimePicker(
+                  context: this.context,
+                  initialTime: TimeOfDay(hour: now.hour, minute: now.minute),
+                ).then((TimeOfDay value) {
+                  if (value != null) {
+                    Scaffold.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(value.format(context)),
+                        action: SnackBarAction(label: 'OK', onPressed: () {}),
+                      ),
+                    );
+                  }
+                });
+              },
+                  ),
+
         ],
       ),
       body: SingleChildScrollView(
