@@ -39,6 +39,12 @@ dependencies:
   flutter_share: ^1.0.5
   splashscreen:
   flutter_speed_dial: ^1.2.5
+  firebase_core: any
+  firebase_auth: any
+
+  cloud_firestore: ^0.14.4
+  firebase_storage: ^4.0.0
+  firebase_database: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -6,7 +6,12 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath 'com.google.gms:google-services:4.3.4'
+
+
     }
+
+
 }
 
 allprojects {
@@ -27,3 +32,4 @@ subprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
